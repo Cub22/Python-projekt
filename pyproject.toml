@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jstrisk"
+version = "0.1.0"
+description = "Data analysis of JST-level population, alcohol outlets, and fire events in Poland (canonical assignment)."
+authors = [{name="Your Name", email="your.email@example.com"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.26",
+    "openpyxl>=3.1"
+]
+
+[project.scripts]
+jstrisk = "jstrisk.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
