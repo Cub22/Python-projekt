@@ -1,4 +1,4 @@
-# jstrisk
+# Python project
 
 An installable Python package for the canonical assignment: analysis of Polish JST-level data
 covering population, alcohol-selling concessions, and fire service (PSP) events — with
