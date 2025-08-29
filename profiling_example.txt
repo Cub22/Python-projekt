@@ -1,0 +1,22 @@
+# Sample profiling excerpt (cProfile)
+
+         12010 function calls (11800 primitive calls) in 0.245 seconds
+
+   Ordered by: cumulative time
+   List reduced from 200 to 60 due to restriction <60>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.002    0.002    0.245    0.245 cli.py:33(_profiled)
+        1    0.003    0.003    0.240    0.240 analysis.py:25(run_analysis)
+        4    0.010    0.002    0.085    0.021 data_io.py:43(load_many)
+        3    0.005    0.002    0.070    0.023 pandas/io/parsers/readers.py:... (read_csv/read_excel)
+        1    0.004    0.004    0.050    0.050 clean_merge.py:24(merge_all)
+        1    0.006    0.006    0.018    0.018 numpy/lib/polynomial.py:... (polyfit)
+...
+Hotspots:
+- I/O (CSV/XLSX parsing) dominates runtime.
+- Merging large frames is the second most expensive step.
+Potential bottlenecks & suggestions (no need to implement):
+- Read with explicit dtypes and use `usecols` to limit columns.
+- Pre-sort and merge on categoricals to speed up joins.
+- Cache normalized tables if running repeatedly on the same inputs.
